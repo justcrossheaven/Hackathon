@@ -24,6 +24,9 @@
     "url": "https://github.com/justcrossheaven/Hackathon/issues"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.1",
     "slate-react": "^0.81.0"
   }
 }
