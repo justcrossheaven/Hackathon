@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/justcrossheaven/Hackathon/issues"
+  },
+  "dependencies": {
+    "slate-react": "^0.81.0"
   }
 }
