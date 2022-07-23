@@ -1,8 +1,8 @@
 html body #root {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .game-canvas-parent {
@@ -35,7 +35,8 @@ html body #root {
 
 .home-page-dog {
   margin-top:200px;
-  max-width:700px;
+  width:700px;
+  height: 420px;
 }
 
 .home-sign {
@@ -107,18 +108,71 @@ input {
 
 }
 
-.email-label {
-
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
 }
 
 .email-input {
+  margin-bottom: 30px;
+}
+
+.register-message {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+
+  color: #FFFFFF;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-sign {
+  width: 150px;
+  height: 35px;
   
+  background: #DA468D;
+  box-shadow: 0px 4px 4px rgba(47, 208, 82, 0.25);
+  border-radius: 30px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 36px;
+/* identical to box height */
+
+text-align: center;
+
+color: #FFFFFF;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 
-.password-label {
+.form-register {
+  margin-top: 20px;
+  width: 150px;
+  height: 35px;
+  
+  background: #DA468D;
+  box-shadow: 0px 4px 4px rgba(47, 208, 82, 0.25);
+  border-radius: 30px;
 
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 36px;
+/* identical to box height */
+
+text-align: center;
+
+color: #FFFFFF;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.password-input {
-
-}

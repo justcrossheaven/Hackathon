@@ -8,20 +8,14 @@ export default function SignInModal() {
                 <h2 className="sign-header">Sign In</h2>
                 <img src={close} alt="close-button"/>
             </nav>
-            <div>
-                <div>
+            <div className="form">
                     <label className="email-label">Email Address</label>
                     <input className="email-input"></input>
-                </div>
-                <div>
                     <label className="password-label">Password</label>
                     <input className="password-input"></input>
-                </div>
-                <div>
                     <p className="register-message">Don't have an account? <u>Register Here</u></p>
-                </div>
             </div>
-            <button>Sign In</button>
+            <button className="form-sign">Sign In</button>
         </div>
     )
 }
