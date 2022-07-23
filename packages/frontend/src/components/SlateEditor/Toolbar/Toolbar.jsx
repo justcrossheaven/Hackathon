@@ -31,7 +31,7 @@ const Toolbar = () => {
       filteredGroups = filteredGroups.filter((elem) => elem.length);
     }
     setToolbarGroups(filteredGroups);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [isTable]);
   const BlockButton = ({ format }) => {
     return (
