@@ -207,6 +207,7 @@ const SlateEditor = (props) => {
               placeholder="Write something"
               renderElement={renderElement}
               renderLeaf={renderLeaf}
+              style={{ padding: "10px" }}
             />
           </GrammarlySlate>
         </div>
