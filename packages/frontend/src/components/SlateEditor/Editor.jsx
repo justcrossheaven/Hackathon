@@ -12,6 +12,8 @@ import Link from'./Elements/Link/Link'
 import Image from './Elements/Image/Image'
 import Video from './Elements/Video/Video'
 
+import { GrammarlyEditable, GrammarlySlate } from "@grammarly/react-slate";
+
 
 const Element = (props) =>{
 
@@ -152,11 +154,18 @@ const SlateEditor = ()=>{
             <Slate editor = {editor} value = {value} onChange = {newValue => setValue(newValue)} >
                 <Toolbar />
                 <div className="editor-wrapper" style={{border:'1px solid #f3f3f3',padding:'0 10px'}}>
-                    <Editable
+                    {/* <Editable
                         placeholder='Write something'
                         renderElement={renderElement} 
                         renderLeaf={renderLeaf}
-                    />
+                    /> */}
+                    <GrammarlySlate value={value} clientId="your-client-id-here">
+                        <GrammarlyEditable 
+                            placeholder='Write something'
+                            renderElement={renderElement} 
+                            renderLeaf={renderLeaf}
+                        />
+                    </GrammarlySlate>
                 </div>
         </Slate>
         
