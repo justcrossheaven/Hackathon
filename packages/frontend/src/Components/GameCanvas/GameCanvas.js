@@ -8,6 +8,8 @@ import { Button } from "@mui/material";
 import catIdle from "../../img/cat_sit.gif";
 import catEat from "../../img/cat_eat.gif";
 import catNap from "../../img/cat_nap.gif";
+import food from "../../img/food.png";
+import hand from "../../img/hand.png";
 
 function Image() {
   const texture = useLoader(TextureLoader, pic);
@@ -21,10 +23,10 @@ function Image() {
 
 const buttonStyle = {
   borderRadius: "5px",
-  padding: "18px",
   margin: "0",
-  fontSize: "2rem",
-  width: "160px",
+  background: "none",
+  width: "200px",
+  height: "200px",
 };
 
 const GameCanvas = (props) => {
@@ -79,7 +81,7 @@ const GameCanvas = (props) => {
               disableElevation
               disabled={catAge > 0 ? false : true}
             >
-              Feed
+              <img src={food} style={{ width: "200px", height: "200px" }} />
             </Button>
           </div>
         </Html>
@@ -91,7 +93,7 @@ const GameCanvas = (props) => {
               disableElevation
               disabled={catAge > 1 ? false : true}
             >
-              Litter
+              <img src={hand} style={{ width: "100px", height: "100px" }} />
             </Button>
           </div>
         </Html>
