@@ -24,27 +24,10 @@ const petSchema = new Schema({
     age: Number,
 });
 
-const User = mongoose.model('User', userSchema);
+export const User = mongoose.model('User', userSchema);
 
-const Document = mongoose.model('Document', documentSchema);
+export const Document = mongoose.model('Document', documentSchema);
 
-const Pet = mongoose.model('Pet', petSchema);
+export const Pet = mongoose.model('Pet', petSchema);
 
-async function run() {
-    console.log('Connecting to database...');
-    await mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority');
 
-    // Clear db
-    await User.deleteMany({});
-    await Document.deleteMany({});
-    await Pet.deleteMany({});
-
-    await new User({ uid: "1" }).save();
-    await new Pet().save();
-    await new Document({ author: "1" }).save();
-    
-    await mongoose.disconnect();
-    console.log('Done!');
-}
-
-run();
