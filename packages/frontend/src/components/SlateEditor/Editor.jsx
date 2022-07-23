@@ -220,7 +220,7 @@ const SlateEditor = (props) => {
           pointerEvents: "none",
         }}
       >
-        Next Level: {wordCount() - 1}/100
+        Next Level: {wordCount() === 0 ? 0 : wordCount() - 1}/100
       </Typography>
     </div>
   );
