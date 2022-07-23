@@ -123,12 +123,18 @@ const SlateEditor = ()=>{
             element.children.forEach(child=>{
                 console.log(child);
                 if(child.text){
-                    count += child.text.split(' ').length;
+                    let s = child.text;
+                    s = s.replace(/\s\s+/g, ' ');
+                    s = s.replace(/  +/g, ' ');
+                    count += s.split(' ').length;
                 }
                 else if(child.children){
                     child.children.forEach(child=>{
                         if(child.text){
-                            count += child.text.split(' ').length;
+                            let s = child.text;
+                            s = s.replace(/\s\s+/g, ' ');
+                            s = s.replace(/  +/g, ' ');
+                            count += s.split(' ').length;
                         }
                     })
                 }
