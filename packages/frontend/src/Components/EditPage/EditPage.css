@@ -1,0 +1,19 @@
+.edit-page {
+    width: 100%;
+    margin: 2% auto;
+    display: flex;
+    flex-direction: row;
+}
+ 
+.text-page {
+margin-left: 10px;
+margin-right: 10px;
+width: 60%;
+position: relative;
+}
+
+.test {
+margin-right: 10px;
+width: 40%;
+}
+  
