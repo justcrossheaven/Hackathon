@@ -14,38 +14,70 @@ app.get('/documentInfo', function (req, res) {
 })
 
 app.get('/alldocuments', (req, res) => {
+    const dbUser = await User.findOne({ uid: req.body.uid });
 
-  return res.send('Received a GET HTTP method');
+    if (dbUser) {
+        const documentIdList = dbUser.documentList;
+
+        const documentList = await Document.find({
+            '_id': { $in: documentIdList }
+        });
+
+        res.json(documentList);
+    }
+
+    return res.json([]);
 });
 
 //if loggin successfully, create local user
 app.post('/user', (req, res) => {
-    const userExist = await User.findOne({ uid: req.body.uid });
+    const dbUser = await User.findOne({ uid: req.body.uid });
     
-    if (!userExist) {
-    const user = new User({
-        uid: req.body.uid,
-        name: req.body.name,
-        profilePic: req.body.profilePic
-    });
-    try {
-        await user.save();
-    } catch { err =>
-        res.status(400).send(err);
+    if (!dbUser) {
+        const user = new User({
+            uid: req.body.uid,
+            name: req.body.name,
+            profilePic: req.body.profilePic
+        });
+        try {
+            await user.save();
+        } catch { err =>
+            res.status(400).send(err);
+        }
     }
-  }
-  return res.send(200);
+    
+    return res.send(200);
 });
 
 //update document
-app.put('/', (req, res) => {
+app.put('/document', (req, res) => {
+    const id = req.body.id;
+    const dbDocument = await Document.findById(id);
     
-
-    return res.send('Received a PUT HTTP method');
+    if (dbDocument) {
+        await Document.updateOne(
+            { _id: id }, 
+            {
+                $set: { 
+                    "content": req.body.content,
+                    "title": req.body.title
+                }
+            },
+        )
+        return res.send("Successful!");
+    };
+    
+    return res.send(400);
 });
 
-app.delete('/', (req, res) => {
-  return res.send('Received a DELETE HTTP method');
+app.delete('/document', (req, res) => {
+    try {
+        await Document.deleteOne({ _id: req.body.id });
+        return res.send(200);
+    } catch {
+        return res.send(400);
+    }
+    
 });
 
 app.listen(3001, () =>

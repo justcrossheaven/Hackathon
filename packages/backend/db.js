@@ -5,7 +5,8 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     uid:  String,
     name: String,
-    profilePic: String
+    profilePic: String,
+    documentList: {type: Schema.Types.ObjectId, ref: 'Document'},
 });
 
 const documentSchema = new Schema({
