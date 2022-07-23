@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import pic from "../../img/gameCanvas.jpeg";
 import { Canvas } from "@react-three/fiber";
 import { useLoader } from "@react-three/fiber";
@@ -7,6 +7,7 @@ import { Html } from "@react-three/drei";
 import { Button } from "@mui/material";
 import catIdle from "../../img/cat_sit.gif";
 import catEat from "../../img/cat_eat.gif";
+import catNap from "../../img/cat_nap.gif";
 
 function Image() {
   const texture = useLoader(TextureLoader, pic);
@@ -28,6 +29,13 @@ const buttonStyle = {
 
 const GameCanvas = () => {
   const [catStatus, setCatStatus] = useState(catIdle);
+  const [catAge, setCatAge] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCatStatus(catNap);
+    }, 10000);
+  }, []);
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -60,6 +68,7 @@ const GameCanvas = () => {
                 }, 4000);
               }}
               disableElevation
+              disabled={catAge > 0 ? false : true}
             >
               Feed
             </Button>
@@ -67,14 +76,24 @@ const GameCanvas = () => {
         </Html>
         <Html center distanceFactor={3} position={[0, 1, 0]}>
           <div>
-            <Button variant="contained" sx={buttonStyle} disableElevation>
+            <Button
+              variant="contained"
+              sx={buttonStyle}
+              disableElevation
+              disabled={catAge > 1 ? false : true}
+            >
               Litter
             </Button>
           </div>
         </Html>
         <Html center distanceFactor={3} position={[1, 0, 0]}>
           <div>
-            <Button variant="contained" sx={buttonStyle} disableElevation>
+            <Button
+              variant="contained"
+              sx={buttonStyle}
+              disableElevation
+              disabled={catAge > 2 ? false : true}
+            >
               Water
             </Button>
           </div>
