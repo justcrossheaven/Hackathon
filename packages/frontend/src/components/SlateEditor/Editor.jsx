@@ -107,7 +107,39 @@ const SlateEditor = ()=>{
             children:[{text:'First line of text in Slate JS. '}],
         },
     ]);
+    
 
+    const onChange = useCallback(value => {
+        setValue(value);
+        const content = JSON.stringify(value);
+        console.log(content);
+    }
+    ,[setValue]);
+
+
+    const wordCount = () =>{
+        let count = 0;
+        value.forEach(element=>{
+            element.children.forEach(child=>{
+                console.log(child);
+                if(child.text){
+                    count += child.text.split(' ').length;
+                }
+                else if(child.children){
+                    child.children.forEach(child=>{
+                        if(child.text){
+                            count += child.text.split(' ').length;
+                        }
+                    })
+                }
+            })
+        }
+        )
+        return count;
+    }
+
+    
+    console.log(wordCount())
 
     const renderElement = useCallback(props => <Element {...props}/>,[])
 
