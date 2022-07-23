@@ -11,6 +11,7 @@ const userSchema = new Schema({
 const documentSchema = new Schema({
     title:  String,
     author: {type: String, ref: 'User'},
+    content: String,
 }, {
     timestamps: true
 });
