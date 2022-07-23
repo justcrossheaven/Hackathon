@@ -8,6 +8,8 @@ import { Button } from "@mui/material";
 import catIdle from "../../img/cat_sit.gif";
 import catEat from "../../img/cat_eat.gif";
 import catNap from "../../img/cat_nap.gif";
+import catPat from "../../img/cat_pat.gif";
+import catPlay from "../../img/cat_play.gif";
 import food from "../../img/food.png";
 import hand from "../../img/hand.png";
 
@@ -32,12 +34,8 @@ const buttonStyle = {
 const GameCanvas = (props) => {
   const [catStatus, setCatStatus] = useState(catIdle);
   const [catAge, setCatAge] = useState(-1);
+  const [engaged, setEngaged] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCatStatus(catNap);
-    }, 10000);
-  }, []);
   console.log(catAge);
   useEffect(() => {
     if (props.wordCount % 10 === 0) {
@@ -70,12 +68,15 @@ const GameCanvas = (props) => {
               variant="contained"
               sx={buttonStyle}
               onClick={() => {
+                if (engaged) return;
+                setEngaged(true);
                 setCatStatus(catEat);
                 setTimeout(() => {
                   setCatStatus(catIdle);
                   setTimeout(() => {
                     setCatStatus(catNap);
-                  }, 10000);
+                    setEngaged(false);
+                  }, 1000);
                 }, 4000);
               }}
               disableElevation
@@ -91,6 +92,18 @@ const GameCanvas = (props) => {
               variant="contained"
               sx={buttonStyle}
               disableElevation
+              onClick={() => {
+                if (engaged) return;
+                setEngaged(true);
+                setCatStatus(catPat);
+                setTimeout(() => {
+                  setCatStatus(catIdle);
+                  setTimeout(() => {
+                    setCatStatus(catNap);
+                    setEngaged(false);
+                  }, 1000);
+                }, 5000);
+              }}
               disabled={catAge > 1 ? false : true}
             >
               <img src={hand} style={{ width: "100px", height: "100px" }} />
@@ -104,8 +117,20 @@ const GameCanvas = (props) => {
               sx={buttonStyle}
               disableElevation
               disabled={catAge > 2 ? false : true}
+              onClick={() => {
+                if (engaged) return;
+                setEngaged(true);
+                setCatStatus(catPlay);
+                setTimeout(() => {
+                  setCatStatus(catIdle);
+                  setTimeout(() => {
+                    setCatStatus(catNap);
+                    setEngaged(false);
+                  }, 1000);
+                }, 6000);
+              }}
             >
-              Water
+              Play
             </Button>
           </div>
         </Html>
