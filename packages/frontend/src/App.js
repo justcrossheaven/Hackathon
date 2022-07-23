@@ -1,12 +1,10 @@
 import "./stylesheets/App.css";
 import HomePage from "./components/HomePage/HomePage";
 import EditPage from "./components/EditPage/EditPage";
-import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 function App() {
-  const [wordCount, setWordCount] = useState(0);
 
   return (
     <div className="App">
