@@ -18,3 +18,107 @@ html body #root {
   background-image: url(../public/gameCanvas.jpeg);
   background-size: cover;
 }
+
+.home-canvas {
+  width: 100vw;
+  height: 100vh;
+  background: url("./img/home_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: hidden;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home-page-dog {
+  margin-top:200px;
+  max-width:700px;
+}
+
+.home-sign {
+  margin: 50px 0px 0px 0px;
+  padding: 8px;
+  gap: 10px;
+  background: rgba(218, 70, 141, 0.7);
+  box-shadow: 0px 4px 4px rgba(47, 208, 82, 0.25);
+  border-radius: 20px;
+  border: none;
+  width:254px;
+  height:48px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sign-in {
+  width: 600px;
+  height: 400px;
+  background: #8641DD;
+  border:none;
+  border-radius: 30px;
+  padding: 30px 40px 0px 40px;
+}
+
+.sign-header {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+
+  color: #FFFFFF;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sign-nav {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+
+}
+
+label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 54px;
+
+  color: #FFFFFF;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+input {
+  width: 400px;
+  height: 30px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: none;
+
+}
+
+.email-label {
+
+}
+
+.email-input {
+  
+}
+
+.password-label {
+
+}
+
+.password-input {
+
+}
