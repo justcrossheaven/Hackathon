@@ -3,7 +3,7 @@ import pic from "../../img/gameCanvas.jpeg";
 import { Canvas } from "@react-three/fiber";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
-import { Html, OrbitControls } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import { Button } from "@mui/material";
 import catIdle from "../../img/cat_sit.gif";
 import catEat from "../../img/cat_eat.gif";
@@ -79,7 +79,6 @@ const GameCanvas = () => {
             </Button>
           </div>
         </Html>
-        <OrbitControls />
       </Canvas>
     </div>
   );
