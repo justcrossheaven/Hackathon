@@ -129,7 +129,7 @@ const Leaf = ({ attributes, children, leaf }) => {
   }
   return <span {...attributes}>{children}</span>;
 };
-const SlateEditor = () => {
+const SlateEditor = (props) => {
   const editor = useMemo(
     () =>
       withHistory(withEmbeds(withTables(withLinks(withReact(createEditor()))))),
@@ -147,7 +147,6 @@ const SlateEditor = () => {
     (value) => {
       setValue(value);
       const content = JSON.stringify(value);
-      console.log(content);
     },
     [setValue]
   );
@@ -156,7 +155,6 @@ const SlateEditor = () => {
     let count = 0;
     value.forEach((element) => {
       element.children.forEach((child) => {
-        console.log(child);
         if (child.text) {
           let s = child.text;
           s = s.replace(/\s\s+/g, " ");
@@ -174,10 +172,9 @@ const SlateEditor = () => {
         }
       });
     });
+    props.setWordCount(count);
     return count;
   };
-
-  console.log(wordCount());
 
   const renderElement = useCallback((props) => <Element {...props} />, []);
 

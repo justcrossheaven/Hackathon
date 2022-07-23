@@ -27,15 +27,21 @@ const buttonStyle = {
   width: "160px",
 };
 
-const GameCanvas = () => {
+const GameCanvas = (props) => {
   const [catStatus, setCatStatus] = useState(catIdle);
-  const [catAge, setCatAge] = useState(0);
+  const [catAge, setCatAge] = useState(-1);
 
   useEffect(() => {
     setTimeout(() => {
       setCatStatus(catNap);
     }, 10000);
   }, []);
+  console.log(catAge);
+  useEffect(() => {
+    if (props.wordCount % 10 === 0) {
+      setCatAge(catAge + 1);
+    }
+  }, [props.wordCount]);
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -65,6 +71,9 @@ const GameCanvas = () => {
                 setCatStatus(catEat);
                 setTimeout(() => {
                   setCatStatus(catIdle);
+                  setTimeout(() => {
+                    setCatStatus(catNap);
+                  }, 10000);
                 }, 4000);
               }}
               disableElevation
