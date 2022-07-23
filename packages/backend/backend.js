@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 
 const app = express()
 app.use(cors({ credentials: true, origin: true }));
+
 app.get('/documentInfo', async function (req, res) {
-    console.log(req)
     const dbDocument = await Document.findById(req.query.id).exec();
     if (dbDocument) {
         res.json(dbDocument);
@@ -82,28 +82,30 @@ app.delete('/document', async (req, res) => {
 });
 
 
-async function run() {
-    console.log('Connecting to database...');
-    // await mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority');
-    await mongoose.connect("mongodb://127.0.0.1:27017/hackathonDB");
-    // Clear db
-    await User.deleteMany({});
-    await Document.deleteMany({});
-    await Pet.deleteMany({});
+// async function run() {
+//     console.log('Connecting to database...');
+//     // await mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority');
+//     await mongoose.connect("mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority");
+//     // Clear db
+//     await User.deleteMany({});
+//     await Document.deleteMany({});
+//     await Pet.deleteMany({});
 
-    await new User({ uid: "1" }).save();
-    await new Pet().save();
-    await new Document({ author: "1" }).save();
+//     await new User({ uid: "1" }).save();
+//     await new Pet().save();
+//     await new Document({ author: "1", content: "1234 123 123"}).save();
     
-    await mongoose.disconnect();
-    console.log('Done!');
-}
+//     await mongoose.disconnect();
+//     console.log('Done!');
+// }
 
+mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority')
+    .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));
 
-run().then(() => {
-    app.listen(3001, () =>
-        console.log(`Example app listening on port 3001!`),
-    );
-}).catch(err => {
-    console.log(err);
-});
+// run().then(() => {
+//     app.listen(3001, () =>
+//         console.log(`Example app listening on port 3001!`),
+//     );
+// }).catch(err => {
+//     console.log(err);
+// });
