@@ -1,11 +1,13 @@
 import React from "react";
 import pic from "../../img/cat_idle.gif";
+import GameButtons from "../GameButtons/GameButtons";
 
 const GameCanvas = () => {
   return (
     <div>
-      <div className="game-canvas-parent" style={{ zIndex: "-1" }}>
+      <div className="game-canvas-parent">
         <div className="game-canvas-child"></div>
+        <GameButtons />
         <img
           src={pic}
           style={{
