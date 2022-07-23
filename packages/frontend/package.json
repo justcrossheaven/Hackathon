@@ -9,6 +9,8 @@
     "@grammarly/react-slate": "^0.11.2",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.1",
+    "@react-three/drei": "^7.5.1",
+    "@react-three/fiber": "^7.0.6",
     "@slate-editor/bold-plugin": "^5.1.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -31,6 +33,7 @@
     "slate-history": "^0.66.0",
     "slate-hyperscript": "^0.62.0",
     "slate-react": "^0.65.2",
+    "three": "^0.136.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

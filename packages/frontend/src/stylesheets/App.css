@@ -1,5 +1,4 @@
-
-.App{
+.App {
   width: 100%;
   margin: 2% auto;
   display: flex;
@@ -40,14 +39,14 @@
   }
 }
 
-.text-page{
+.text-page {
   margin-left: 10px;
   margin-right: 10px;
   width: 60%;
+  position: relative;
 }
 
-.test{
-  background-color: orange;
+.test {
   margin-right: 10px;
   width: 40%;
 }
