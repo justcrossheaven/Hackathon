@@ -1,15 +1,15 @@
 import "./App.css";
-import HomePage from "./components/HomePage/HomePage";
-import EditPage from "./components/EditPage/EditPage";
-import SignInModal from "./components/SignInModal/SignInModal";
-import RegisterModal from "./components/RegisterModal/RegisterModal";
+import HomePage from "./Components/HomePage/HomePage";
+import EditPage from "./Components/EditPage/EditPage";
+import SignInModal from "./Components/SignInModal/SignInModal";
+import RegisterModal from "./Components/RegisterModal/RegisterModal";
 
 import { BrowserRouter } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { userContext } from "./userContext";
 import React, { useState } from "react";
-import ListPage from "./components/ListPage/ListPage";
+import ListPage from "./Components/ListPage/ListPage";
 
 function App() {
   const [userId, setUserId] = useState("");
