@@ -37,7 +37,7 @@ const GameCanvas = (props) => {
   const [catAge, setCatAge] = useState(-1);
   const [engaged, setEngaged] = useState(false);
 
-  console.log(catAge);
+  console.log(props.wordCount);
   useEffect(() => {
     if (props.wordCount % 10 === 0) {
       setCatAge(catAge + 1);
@@ -81,7 +81,7 @@ const GameCanvas = (props) => {
                 }, 4000);
               }}
               disableElevation
-              disabled={catAge > 0 ? false : true}
+              disabled={props.wordCount > 2 ? false : true}
             >
               <img src={food} style={{ width: "200px", height: "200px" }} />
             </Button>
@@ -105,7 +105,7 @@ const GameCanvas = (props) => {
                   }, 1000);
                 }, 5000);
               }}
-              disabled={catAge > 1 ? false : true}
+              disabled={props.wordCount > 5 ? false : true}
             >
               <img src={hand} style={{ width: "100px", height: "100px" }} />
             </Button>
@@ -117,7 +117,7 @@ const GameCanvas = (props) => {
               variant="contained"
               sx={buttonStyle}
               disableElevation
-              disabled={catAge > 2 ? false : true}
+              disabled={props.wordCount > 10 ? false : true}
               onClick={() => {
                 if (engaged) return;
                 setEngaged(true);
