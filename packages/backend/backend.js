@@ -84,7 +84,7 @@ app.delete('/document', async (req, res) => {
 
 });
 
-// mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority')
-//     .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));
-mongoose.connect('mongodb://localhost:27017/hackathonDB')
+mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority')
     .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));
+// mongoose.connect('mongodb://localhost:27017/hackathonDB')
+//     .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));

@@ -10,7 +10,10 @@ const userSchema = new Schema({
 });
 
 const documentSchema = new Schema({
-    title:  String,
+    title:  {
+        type: String,
+        default: 'Untitled Document'
+    },
     author: {type: String, ref: 'User'},
     content: String,
     wordCount: Number
