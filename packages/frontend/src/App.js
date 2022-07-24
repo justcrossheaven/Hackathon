@@ -9,6 +9,7 @@ import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { userContext } from "./userContext";
 import React, { useState } from "react";
+import ListPage from "./components/ListPage/ListPage";
 
 function App() {
   const [userId, setUserId] = useState("");
@@ -20,7 +21,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/edit" element={<EditPage />} />
           {/* <Route exact path="/list" element={<ListPage/>} /> */}
-          <Route exact path="/list" element={<p>list page</p>} />
+          <Route exact path="/list" element={<ListPage />} />
           <Route exact path="/login" element={<SignInModal />} />
           <Route exact path="/register" element={<RegisterModal />} />
 
