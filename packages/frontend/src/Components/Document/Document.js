@@ -1,13 +1,15 @@
 import React from "react"
+import { useState } from "react"
+const Document = (props) => {
 
-export default function Document() {
     return (
         <div className="document">
-            <p className="doc-name">Mary Had A Little Lamb</p>
+            <p className="doc-name">{props.title}</p>
             <div className="bottom">
-                <p className="modified">Last Modified: 23/07/2022</p>
-                <p className="created">Created: 23/07/2022</p>
+                <p className="modified">Modified: {props.updatedAt}</p>
+                <p className="created">Created: {props.createdAt}</p>
             </div>
         </div>
     )
 }
+export default Document;
