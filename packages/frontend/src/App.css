@@ -278,6 +278,7 @@ input {
   flex-direction: column;
   align-items: center;
   padding: 80px 0px 80px 0px;
+  justify-content: center;
 }
 
 .document {
@@ -286,6 +287,10 @@ input {
   background-color: #da468d;
   margin-bottom: 50px;
   border-radius: 20px;
+}
+
+.document:last-child {
+  margin-bottom: 0;
 }
 
 .doc-name {
