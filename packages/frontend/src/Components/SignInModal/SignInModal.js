@@ -1,13 +1,10 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
+import { userContext } from '../../userContext'; 
 import close from "../../img/modal-close.png";
-import {
-  signInWithGoogle,
-  registerWithEmailAndPassword,
-  signInWithEmail,
-} from "../../Firebase";
 import { Link } from "react-router-dom";
 import { initializeApp, FirebaseError } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+ 
 
 export default function SignInModal() {
   const firebaseConfig = {
@@ -24,24 +21,13 @@ export default function SignInModal() {
 
   const provider = new GoogleAuthProvider()
 
-  const [user, setUser] = useState({});
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const signInWithEmail = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password).then(result => {
-        alert("sucessfully logged in!");
-        return result;
-    }).catch(err => {
-        const errorCode = err.code;
-        const errorMessage = err.message;
-        console.log(errorMessage);
-    })
-  }
+  const { userId, serUser }= useContext(userContext);
+  // console.log(userId);
+  // console.log(serUser);
 
   const signInWithGoogle = () =>  {
     signInWithPopup(auth, provider).then((result) => {
-      setUser(result.user);
+      serUser(result.user);
     }).catch((error) => {
         console.log(error)
         if (error instanceof FirebaseError) {
@@ -58,8 +44,6 @@ export default function SignInModal() {
     })
   }; 
 
-  
-
   return (
     <div className="home-canvas">
       <div className="sign-in">
@@ -74,24 +58,12 @@ export default function SignInModal() {
           </Link>
         </nav>
 
-        <div className="form">
-          <label className="email-label">Email Address</label>
-          <input className="email-input" onChange={e => setEmail(e.target.value)}></input>
-          <label className="password-label">Password</label>
-          <input className="password-input" onChange={e => setPassword(e.target.value)}></input>
-          <p className="register-message">
-            Don't have an account?{" "}
-            <Link to="/register" style={{ color: "white" }}>
-              Register Here
-            </Link>
-          </p>
-        </div>
-        
         <div style={{ display: "flex", alignItems: "center" }}>
-          <button className="form-sign" onClick={() => signInWithEmail(email, password)}>Sign In</button>
+
           <button onClick={signInWithGoogle} className="login-with-google-btn">
             Sign In With Google
           </button>
+          
         </div>
       </div>
     </div>
