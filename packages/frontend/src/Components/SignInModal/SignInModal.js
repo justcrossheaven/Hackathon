@@ -22,11 +22,12 @@ export default function SignInModal() {
   const provider = new GoogleAuthProvider()
 
   const { userId, serUser }= useContext(userContext);
+  // console.log(userId);
+  // console.log(serUser);
 
   const signInWithGoogle = () =>  {
     signInWithPopup(auth, provider).then((result) => {
       serUser(result.user);
-      console.log(userId);
     }).catch((error) => {
         console.log(error)
         if (error instanceof FirebaseError) {
