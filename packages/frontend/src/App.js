@@ -10,6 +10,7 @@ import { Route } from "react-router-dom";
 import { userContext } from "./userContext";
 import React, { useState } from "react";
 import ListPage from "./Components/ListPage/ListPage";
+import CreateDocPage from "./Components/CreateDocPage/CreateDocPage";
 
 function App() {
   const [userId, setUserId] = useState("");
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/list" element={<ListPage />} />
           <Route exact path="/login" element={<SignInModal />} />
           <Route exact path="/register" element={<RegisterModal />} />
+          <Route exact path="/createDoc" element={<CreateDocPage />} />
 
           <Route path="*" element={<p>404 not found</p>} />
         </Routes>
