@@ -21,7 +21,7 @@ app.get('/documentInfo', async function (req, res) {
 })
 
 app.get('/alldocuments', async function (req, res) {
-    const dbUser = await User.findOne({ uid: req.query.id }).exec();
+    const dbUser = await User.findOne({ uid: req.query.uid }).exec();
 
     if (dbUser) {
         const documentIdList = dbUser.documentList;
