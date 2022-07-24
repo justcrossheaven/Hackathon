@@ -1,9 +1,9 @@
-// import { run } from './db';
 import cors from "cors";
 import { User, Document, Pet } from './schema';
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
+
 const app = express();
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
@@ -47,6 +47,17 @@ app.post('/user', async function (req, res) {
     res.json(user);
 });
 
+app.post('/document', async function (req, res) {
+    const dbDocument = new Document({
+        title: req.body.title,
+        author: req.body.author,
+        content: req.body.content,
+        wordCount: req.body.wordCount
+    });
+    await dbDocument.save();
+    res.json(dbDocument);
+});
+
 //update document
 app.put('/document', async function (req, res) {
     const id = req.body.id;
@@ -55,6 +66,7 @@ app.put('/document', async function (req, res) {
         dbDocument.title = req.body.title;
         dbDocument.author = req.body.author;
         dbDocument.content = req.body.content;
+        dbDocument.wordCount = req.body.wordCount;
         await dbDocument.save();
         res.json(dbDocument);
     }else{
@@ -72,7 +84,7 @@ app.delete('/document', async (req, res) => {
 
 });
 
-// mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority')
-//     .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));
-mongoose.connect('mongodb://localhost:27017/hackathonDB')
+mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority')
     .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));
+// mongoose.connect('mongodb://localhost:27017/hackathonDB')
+//     .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));
