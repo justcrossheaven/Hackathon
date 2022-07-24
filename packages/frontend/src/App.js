@@ -4,9 +4,17 @@ import EditPage from "./components/EditPage/EditPage";
 import { BrowserRouter } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
+import { signInWithGoogle, registerWithEmailAndPassword, signInWithEmail } from './Firebase'; 
+import { userContext } from './userContext';
+
 function App() {
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState("");
+
   return (
+      <userContext.Provider value={{ userId, setUserId }}>
     <div className="App">
       <BrowserRouter>
         <Routes>
@@ -17,7 +25,13 @@ function App() {
           <Route path="*" element={<p>404 not found</p>} />  
         </Routes>   
       </BrowserRouter>      
+      <button onClick={signInWithGoogle} className="login-with-google-btn">
+            Sign In With Google
+          </button>
     </div>
+    
+    </userContext.Provider>
+
   );
 }
 
