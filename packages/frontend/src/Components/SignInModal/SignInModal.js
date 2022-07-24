@@ -1,10 +1,10 @@
 import { React, useState, useContext } from "react";
 import { userContext } from '../../userContext'; 
 import close from "../../img/modal-close.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { initializeApp, FirebaseError } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
- 
+
 
 export default function SignInModal() {
   const firebaseConfig = {
@@ -16,6 +16,7 @@ export default function SignInModal() {
     appId: "1:722371298793:web:17fe547bb60f08cef6b778"
   };
   
+  const navigate = useNavigate();
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
@@ -28,6 +29,7 @@ export default function SignInModal() {
   const signInWithGoogle = () =>  {
     signInWithPopup(auth, provider).then((result) => {
       serUser(result.user);
+      navigate("/list");
     }).catch((error) => {
         console.log(error)
         if (error instanceof FirebaseError) {

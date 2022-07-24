@@ -23,13 +23,13 @@ app.get('/documentInfo', async function (req, res) {
 })
 
 app.get('/alldocuments', async function (req, res) {
-    const dbUser = await User.findOne({ uid: req.query.uid }).exec();
+    const dbUser = await User.findOne({ uid: req.query.id }).exec();
 
     if (dbUser) {
         const documentIdList = dbUser.documentList;
 
         const documentList = await Document.find({
-            '_id': { $in: documentIdList }
+            'uid': { $in: documentIdList }
         });
         res.json(documentList);
     } else {
