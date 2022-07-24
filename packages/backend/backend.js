@@ -47,6 +47,17 @@ app.post('/user', async function (req, res) {
     res.json(user);
 });
 
+app.post('/document', async function (req, res) {
+    const dbDocument = new Document({
+        title: req.body.title,
+        author: req.body.author,
+        content: req.body.content,
+        wordCount: req.body.wordCount
+    });
+    await dbDocument.save();
+    res.json(dbDocument);
+});
+
 //update document
 app.put('/document', async function (req, res) {
     const id = req.body.id;
@@ -55,6 +66,7 @@ app.put('/document', async function (req, res) {
         dbDocument.title = req.body.title;
         dbDocument.author = req.body.author;
         dbDocument.content = req.body.content;
+        dbDocument.wordCount = req.body.wordCount;
         await dbDocument.save();
         res.json(dbDocument);
     }else{
