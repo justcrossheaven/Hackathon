@@ -42,6 +42,7 @@ const GameCanvas = (props) => {
     if (props.wordCount % 10 === 0) {
       setCatAge(catAge + 1);
     }
+    console.log(props.wordCount)
   }, [props.wordCount]);
 
   return (

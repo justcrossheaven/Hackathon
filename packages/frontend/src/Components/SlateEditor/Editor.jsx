@@ -255,7 +255,7 @@ const SlateEditor = (props) => {
           </GrammarlySlate>
         </div>
       </Slate>
-      {/* <Typography
+      <Typography
         style={{
           position: "absolute",
           bottom: "10px",
@@ -264,8 +264,8 @@ const SlateEditor = (props) => {
           pointerEvents: "none",
         }}
       >
-        Next Level: {wordCount() === 0 ? 0 : wordCount() - 1}/100
-      </Typography> */}
+        Word count: {wordCount() === 0 ? 0 : wordCount() - 1}
+      </Typography>
     </div>
   );
 };
