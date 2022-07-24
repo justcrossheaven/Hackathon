@@ -1,8 +1,10 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
+import { userContext } from '../../userContext'; 
 import close from "../../img/modal-close.png";
 import { Link } from "react-router-dom";
 import { initializeApp, FirebaseError } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+ 
 
 export default function SignInModal() {
   const firebaseConfig = {
@@ -19,12 +21,12 @@ export default function SignInModal() {
 
   const provider = new GoogleAuthProvider()
 
-  const [user, setUser] = useState({});
+  const { userId, serUser }= useContext(userContext);
 
   const signInWithGoogle = () =>  {
     signInWithPopup(auth, provider).then((result) => {
-      setUser(result.user);
-      alert("setUser");
+      serUser(result.user);
+      console.log(userId);
     }).catch((error) => {
         console.log(error)
         if (error instanceof FirebaseError) {
