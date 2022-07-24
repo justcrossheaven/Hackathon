@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState, useEffect } from "react";
 import { createEditor } from "slate";
 import { withHistory } from "slate-history";
 import { Slate, Editable, withReact } from "slate-react";
@@ -145,6 +145,53 @@ const SlateEditor = (props) => {
     },
     [setValue]
   );
+
+
+  const request = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: "test",
+      author:"test",
+      wordCount: 100,
+      content: JSON.stringify(value),
+    })
+  }
+
+
+  useEffect(() => {
+    const request_put = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id:"test",
+        title: "test",
+        author: "test",
+        wordCount: 100,
+        content: JSON.stringify(value),
+      })
+    }
+
+    const interval = setInterval(() => fetch("http://localhost:3001/document", request_put).then((res) => {
+      // console.log(res);
+    }), 30000)
+    return () => {
+      clearInterval(interval);
+    }
+  }, [])
+
+
+  const saveToDatabse = () => {
+    fetch("http://localhost:3001/document", request).then((res) => {
+      // console.log(res);
+    });
+  }
+
+  saveToDatabse();
 
   const wordCount = () => {
     let count = 0;

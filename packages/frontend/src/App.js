@@ -13,10 +13,13 @@ import ListPage from "./Components/ListPage/ListPage";
 import CreateDocPage from "./Components/CreateDocPage/CreateDocPage";
 
 function App() {
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState({});
+  function serUser(id) {
+    setUserId(id)
+  }
 
   return (
-    <userContext.Provider value={{ userId, setUserId }}>
+    <userContext.Provider value={{ userId, serUser }}>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
