@@ -3,21 +3,23 @@ import cors from "cors";
 import { User, Document, Pet } from './schema';
 const express = require('express');
 const mongoose = require('mongoose');
-
-const app = express()
+const bodyParser = require('body-parser')
+const app = express();
 app.use(cors({ credentials: true, origin: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.get('/documentInfo', async function (req, res) {
     const dbDocument = await Document.findById(req.query.id).exec();
     if (dbDocument) {
         res.json(dbDocument);
     } else {
-        res.send("Not Found");
+        res.send(404);
     }
 })
 
 app.get('/alldocuments', async function(req, res) {
-    const dbUser = await User.findOne({ uid: req.body.uid }).exec();
+    const dbUser = await User.findOne({ uid: req.query.id }).exec();
 
     if (dbUser) {
         const documentIdList = dbUser.documentList;
@@ -26,28 +28,24 @@ app.get('/alldocuments', async function(req, res) {
             '_id': { $in: documentIdList }
         });
         res.json(documentList);
+    } else {
+        res.send(404);
     }
-    return res.json([]);
 });
 
 //if loggin successfully, create local user
 app.post('/user', async function(req, res) {
-    const dbUser = await User.findOne({ uid: req.body.uid }).exec();
-    
-    if (!dbUser) {
+    try{
         const user = new User({
             uid: req.body.uid,
             name: req.body.name,
             profilePic: req.body.profilePic
         });
-        try {
-            await user.save();
-        } catch { err =>
-            res.status(400).send(err);
-        }
+        await user.save();
+        res.json(user);
+    }catch(err){
+        res.send(400);
     }
-    
-    return res.send(200);
 });
 
 //update document
@@ -65,7 +63,7 @@ app.put('/document', async function(req, res) {
                 }
             },
         )
-        return res.send("Successful!");
+        return res.json(dbDocument);
     };
     
     return res.send(400);
