@@ -1,6 +1,6 @@
 // import { run } from './db';
 import cors from "cors";
-import { User, Document, Pet } from './db';
+import { User, Document, Pet } from './schema';
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -12,7 +12,7 @@ app.get('/documentInfo', async function (req, res) {
     if (dbDocument) {
         res.json(dbDocument);
     } else {
-        res.statusCode(404);
+        res.send("Not Found");
     }
 })
 
@@ -81,31 +81,5 @@ app.delete('/document', async (req, res) => {
     
 });
 
-
-// async function run() {
-//     console.log('Connecting to database...');
-//     // await mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority');
-//     await mongoose.connect("mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority");
-//     // Clear db
-//     await User.deleteMany({});
-//     await Document.deleteMany({});
-//     await Pet.deleteMany({});
-
-//     await new User({ uid: "1" }).save();
-//     await new Pet().save();
-//     await new Document({ author: "1", content: "1234 123 123"}).save();
-    
-//     await mongoose.disconnect();
-//     console.log('Done!');
-// }
-
 mongoose.connect('mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority')
     .then(() => app.listen(3001, () => console.log(`App server listening on port 3001!`)));
-
-// run().then(() => {
-//     app.listen(3001, () =>
-//         console.log(`Example app listening on port 3001!`),
-//     );
-// }).catch(err => {
-//     console.log(err);
-// });

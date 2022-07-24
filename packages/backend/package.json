@@ -18,6 +18,7 @@
     "url": "git+https://github.com/justcrossheaven/Hackathon.git"
   },
   "scripts": {
+    "init-db": "node -r esm init-db.js",
     "start": "node -r esm backend.js",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },

@@ -13,6 +13,7 @@ const documentSchema = new Schema({
     title:  String,
     author: {type: String, ref: 'User'},
     content: String,
+    wordCount: Number
 }, {
     timestamps: true
 });
@@ -29,5 +30,3 @@ export const User = mongoose.model('User', userSchema);
 export const Document = mongoose.model('Document', documentSchema);
 
 export const Pet = mongoose.model('Pet', petSchema);
-
-
