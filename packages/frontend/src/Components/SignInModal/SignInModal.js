@@ -61,11 +61,17 @@ export default function SignInModal() {
   
 
   return (
-    <div style={{ height: "100vh", width: "100vw" }}>
+    <div className="home-canvas">
       <div className="sign-in">
         <nav className="sign-nav">
           <h2 className="sign-header">Sign In</h2>
-          <img src={close} alt="close-button" />
+          <Link to="/">
+            <img
+              src={close}
+              style={{ width: "32px", height: "auto" }}
+              alt="close-button"
+            />
+          </Link>
         </nav>
 
         <div className="form">
@@ -74,14 +80,20 @@ export default function SignInModal() {
           <label className="password-label">Password</label>
           <input className="password-input" onChange={e => setPassword(e.target.value)}></input>
           <p className="register-message">
-            Don't have an account? <Link to="/register">Register Here</Link>
+            Don't have an account?{" "}
+            <Link to="/register" style={{ color: "white" }}>
+              Register Here
+            </Link>
           </p>
         </div>
         
         <button className="form-sign" onClick={() => signInWithEmail(email, password)}>Sign In</button>
-        <button onClick={signInWithGoogle} className="login-with-google-btn">
-          Sign In With Google
-        </button>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <button className="form-sign">Sign In</button>
+          <button onClick={signInWithGoogle} className="login-with-google-btn">
+            Sign In With Google
+          </button>
+        </div>
       </div>
     </div>
   );
