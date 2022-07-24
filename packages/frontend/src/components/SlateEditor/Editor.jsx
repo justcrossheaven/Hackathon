@@ -136,12 +136,7 @@ const SlateEditor = (props) => {
     []
   );
 
-  const [value, setValue] = useState([
-    {
-      type: "paragaph",
-      children: [{ text: "First line of text in Slate JS. " }],
-    },
-  ]);
+  const [value, setValue] = useState(props.editorContent);
 
   const onChange = useCallback(
     (value) => {

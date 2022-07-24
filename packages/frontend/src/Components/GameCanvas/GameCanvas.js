@@ -12,6 +12,7 @@ import catPat from "../../img/cat_pat.gif";
 import catPlay from "../../img/cat_play.gif";
 import food from "../../img/food.png";
 import hand from "../../img/hand.png";
+import play from "../../img/feather.png";
 
 function Image() {
   const texture = useLoader(TextureLoader, pic);
@@ -130,7 +131,7 @@ const GameCanvas = (props) => {
                 }, 6000);
               }}
             >
-              Play
+              <img src={play} style={{ width: "100px", height: "100px" }} />
             </Button>
           </div>
         </Html>

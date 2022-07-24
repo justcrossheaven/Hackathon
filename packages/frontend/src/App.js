@@ -15,20 +15,18 @@ function App() {
 
   return (
     <userContext.Provider value={{ userId, setUserId }}>
-      <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/edit" element={<EditPage />} />
-            {/* <Route exact path="/list" element={<ListPage/>} /> */}
-            <Route exact path="/list" element={<p>list page</p>} />
-            <Route exact path="/login" element={<SignInModal />} />
-            <Route exact path="/register" element={<RegisterModal />} />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/edit" element={<EditPage />} />
+          {/* <Route exact path="/list" element={<ListPage/>} /> */}
+          <Route exact path="/list" element={<p>list page</p>} />
+          <Route exact path="/login" element={<SignInModal />} />
+          <Route exact path="/register" element={<RegisterModal />} />
 
-            <Route path="*" element={<p>404 not found</p>} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+          <Route path="*" element={<p>404 not found</p>} />
+        </Routes>
+      </BrowserRouter>
     </userContext.Provider>
   );
 }
