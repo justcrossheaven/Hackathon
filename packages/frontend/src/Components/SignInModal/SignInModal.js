@@ -87,9 +87,8 @@ export default function SignInModal() {
           </p>
         </div>
         
-        <button className="form-sign" onClick={() => signInWithEmail(email, password)}>Sign In</button>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <button className="form-sign">Sign In</button>
+          <button className="form-sign" onClick={() => signInWithEmail(email, password)}>Sign In</button>
           <button onClick={signInWithGoogle} className="login-with-google-btn">
             Sign In With Google
           </button>
