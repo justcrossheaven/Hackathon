@@ -29,6 +29,18 @@ export default function SignInModal() {
   const signInWithGoogle = () =>  {
     signInWithPopup(auth, provider).then((result) => {
       serUser(result.user);
+      fetch('http://localhost:3001/user', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          uid: result.user.uid,
+          name: result.user.displayName
+        })
+      })
+    }).then(() => {
       navigate("/list");
     }).catch((error) => {
         console.log(error)

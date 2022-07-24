@@ -29,7 +29,7 @@ app.get('/alldocuments', async function (req, res) {
         const documentIdList = dbUser.documentList;
 
         const documentList = await Document.find({
-            'uid': { $in: documentIdList }
+            '_id': { $in: documentIdList }
         });
         res.json(documentList);
     } else {
@@ -42,7 +42,6 @@ app.post('/user', async function (req, res) {
     const user = new User({
         uid: req.body.uid,
         name: req.body.name,
-        profilePic: req.body.profilePic
     });
     await user.save();
     console.log(user)
