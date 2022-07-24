@@ -13,6 +13,7 @@ function App() {
           <Route exact path="/" element={<HomePage/>} />
           <Route exact path="/edit" element={<EditPage/>} />
           {/* <Route exact path="/list" element={<ListPage/>} /> */}
+          <Route exact path="/list" element={<p>list page</p>} />
           <Route path="*" element={<p>404 not found</p>} />  
         </Routes>   
       </BrowserRouter>      
