@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Document from "../Document/Document";
+import { userContext } from '../../userContext'; 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 export default function ListPage() {
   const [documents, setDocuments] = useState([]);
-
+  const { userId, serUser }= useContext(userContext);
   // const request = {
   //     method: "POST",
   //     headers: {
@@ -23,7 +24,7 @@ export default function ListPage() {
   //     });
   //   }
 
-  const id = "1";
+  const id = userId.uid;
   useEffect(() => {
     fetch("http://localhost:3001/alldocuments?id=" + id, {
       method: "GET",
