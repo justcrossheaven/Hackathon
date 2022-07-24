@@ -19,6 +19,7 @@ const provider = new GoogleAuthProvider()
 export const registerWithEmailAndPassword = (email, password) => {
     createUserWithEmailAndPassword(auth, email, password).then((result) => {
         alert("successfully registered!");
+        return result;
     }).catch((err) => {
         const errorCode = err.code;
         const errorMessage = err.message;
@@ -26,8 +27,9 @@ export const registerWithEmailAndPassword = (email, password) => {
 }
 
 export const signInWithEmail = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password).then(userCredential => {
+    signInWithEmailAndPassword(auth, email, password).then(result => {
         alert("sucessfully logged in!");
+        return result;
     }).catch(err => {
         const errorCode = err.code;
         const errorMessage = err.message;
@@ -36,11 +38,7 @@ export const signInWithEmail = (email, password) => {
 }
 
 export const signInWithGoogle = () =>  {
-    signInWithPopup(auth, provider).then((result) => {
-        const name = result.user.displayName
-        const email = result.user.email
-        const profilePic = result.user.profilePic
-    }).catch((error) => {
+    signInWithPopup(auth, provider).then((result) => result.user).catch((error) => {
         console.log(error)
         if (error instanceof FirebaseError) {
             if (error.code === 'auth/invalid-email') {
