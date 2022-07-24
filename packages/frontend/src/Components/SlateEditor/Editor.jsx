@@ -146,7 +146,6 @@ const SlateEditor = (props) => {
     [setValue]
   );
 
-
   const request = {
     method: "POST",
     headers: {
@@ -154,12 +153,11 @@ const SlateEditor = (props) => {
     },
     body: JSON.stringify({
       title: "test",
-      author:"test",
+      author: "test",
       wordCount: 100,
       content: JSON.stringify(value),
-    })
-  }
-
+    }),
+  };
 
   useEffect(() => {
     const request_put = {
@@ -168,28 +166,31 @@ const SlateEditor = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id:"test",
+        id: "test",
         title: "test",
         author: "test",
         wordCount: 100,
         content: JSON.stringify(value),
-      })
-    }
+      }),
+    };
 
-    const interval = setInterval(() => fetch("http://localhost:3001/document", request_put).then((res) => {
-      // console.log(res);
-    }), 30000)
+    const interval = setInterval(
+      () =>
+        fetch("http://localhost:3001/document", request_put).then((res) => {
+          // console.log(res);
+        }),
+      30000
+    );
     return () => {
       clearInterval(interval);
-    }
-  }, [])
-
+    };
+  }, []);
 
   const saveToDatabse = () => {
     fetch("http://localhost:3001/document", request).then((res) => {
       // console.log(res);
     });
-  }
+  };
 
   saveToDatabse();
 
@@ -254,7 +255,7 @@ const SlateEditor = (props) => {
           </GrammarlySlate>
         </div>
       </Slate>
-      <Typography
+      {/* <Typography
         style={{
           position: "absolute",
           bottom: "10px",
@@ -264,7 +265,7 @@ const SlateEditor = (props) => {
         }}
       >
         Next Level: {wordCount() === 0 ? 0 : wordCount() - 1}/100
-      </Typography>
+      </Typography> */}
     </div>
   );
 };
