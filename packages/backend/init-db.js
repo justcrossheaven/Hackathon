@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 async function run() {
     console.log('Connecting to database...');
 
-    await mongoose.connect("mongodb+srv://admin0:UUYVpH6WbZ7iwx4@cluster0.1buxm.mongodb.net/HackathonDB?retryWrites=true&w=majority");
+    await mongoose.connect("mongodb://localhost:27017/hackathonDB");
     // Clear db
     await User.deleteMany({});
     await Document.deleteMany({});

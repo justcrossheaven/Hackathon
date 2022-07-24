@@ -1,9 +1,9 @@
-// import { run } from './db';
 import cors from "cors";
 import { User, Document, Pet } from './schema';
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
+
 const app = express();
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
